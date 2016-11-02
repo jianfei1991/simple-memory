@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽</title>
+	<style>
+		*{margin:0;padding:0;}
+		#div{height: 100px; width: 100px; border:solid red 1px;position: absolute;left:10px;}
+		.box {width:2px; height:2px; background:black; position:absolute;}
+	</style>
+</head>
+<body>
+	<div id="dd" style="border:solid red 1px; height:200px;width:200px;position:relative;">
+		<div id="div">123</div>	
+	</div>
+
+	<script>
+		function drag(id){
+			var oDiv = document.getElementById(id);
+			oDiv.onmousedown = function(ev){
+				ev.cancelBubble = true;
+				var disX = ev.clientX - oDiv.offsetLeft;
+				var disY = ev.clientY - oDiv.offsetTop;
+				document.onmousemove = function(ev){
+					var l = ev.clientX - disX;
+					var t = ev.clientY - disY;
+					oDiv.style.left = l+'px';
+					oDiv.style.top  = t+'px';
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+			return false;
+		}
+		drag('dd')
+		drag('div')
+	</script>
+</body>
+</html>

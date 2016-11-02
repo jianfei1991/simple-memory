@@ -1,0 +1,9 @@
+@media screen and (min-width:300px){
+	@media screen and (max-width:700px){
+
+		html,body{
+			max-width: 440px;
+			background: red;
+		}
+	}
+}

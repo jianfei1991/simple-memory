@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TabSwitch</title>
+	<style>
+		*{margin:0;padding:0;}
+		ul li{height:200px;width:200px;border:solid red 1px; list-style: none; display: none;}
+		ul li.ac{display: block;}
+	</style>
+</head>
+<body>
+	<div style="border:solid #ccc 1px; height:230px;width:200px;margin:100px auto;">
+		<div id="ctrl">
+			<input type="button" value="1">
+			<input type="button" value="2">
+			<input type="button" value="3">
+		</div>
+		<ul id="panel">
+			<li class="ac">1111</li>
+			<li>2222</li>
+			<li>3333</li>
+		</ul>
+	</div>
+	<script>
+		var oCtrl = document.getElementById('ctrl');
+		var oPanel = document.getElementById("panel");
+		var aInput = oCtrl.getElementsByTagName('input');
+		var aLi = oPanel.getElementsByTagName("li");
+
+		for(var i = 0; i < aInput.length; i++){
+			aInput[i].index = i;
+			aInput[i].onclick = function(){
+				for(var j = 0; j < aLi.length; j++){
+					aLi[j].className = '';
+				}
+				aLi[this.index].className = 'ac'
+
+			}
+		}
+	</script>
+</body>
+</html>
